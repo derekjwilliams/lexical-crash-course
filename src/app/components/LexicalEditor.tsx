@@ -1,21 +1,26 @@
 'use client'
 
-import { $getRoot, $getSelection } from 'lexical';
-import { useEffect } from 'react';
+import { $getRoot, $getSelection } from 'lexical'
+import { useEffect } from 'react'
 
-import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
-import { LexicalComposer } from '@lexical/react/LexicalComposer';
-import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
-import { ContentEditable } from '@lexical/react/LexicalContentEditable';
-import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
-import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
-import LexicalToolbar from './LexicalToolbar';
+import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin'
+import { LexicalComposer } from '@lexical/react/LexicalComposer'
+import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
+import { ContentEditable } from "@lexical/react/LexicalContentEditable"
+import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin'
+import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary'
+import LexicalToolbar from './LexicalToolbar'
+
+// Notes:
+// when Lexical sets bold it changes the element to <strong>
+// when Lexical sets italic it changes the element to <em>
+// when Lexical sets normal(?) it changes the element to <span>
 
 // Catch any errors that occur during Lexical updates and log them
 // or throw them as needed. If you don't throw them, Lexical will
 // try to recover gracefully without losing user data.
 function onError(error: any) {
-  console.error(error);
+  console.error(error)
 }
 
 // export default function LexicalEditor() {
@@ -27,16 +32,14 @@ export default function LexicalEditor() {
     namespace: 'MyEditor',
     theme,
     onError,
-  };
+  }
 
   return (
-    <div className="max-w-4xl mx-auto bg-white rounded-lg h-[50vh] p-5">
+    <div className='max-w-4xl mx-auto bg-white rounded-lg h-[50vh] p-5'>
       <LexicalComposer initialConfig={initialConfig}>
         <LexicalToolbar></LexicalToolbar>
         <RichTextPlugin
-          contentEditable={
-            <ContentEditable className="focus:outline-none" />
-          }
+          contentEditable={<ContentEditable className='focus:outline-none' />}
           placeholder={<div>Enter some text...</div>}
           ErrorBoundary={LexicalErrorBoundary}
         />
@@ -44,13 +47,13 @@ export default function LexicalEditor() {
         <AutoFocusPlugin />
       </LexicalComposer>
     </div>
-  );
+  )
 }
 
 const theme = {
   ltr: 'ltr',
   rtl: 'rtl',
-  paragraph: 'text-blue-500',
+  paragraph: '',
   quote: 'editor-quote',
   heading: {
     h1: 'editor-heading-h1',
@@ -74,9 +77,9 @@ const theme = {
   image: 'editor-image',
   link: 'editor-link',
   text: {
-    bold: 'editor-textBold',
+    bold: 'font-bold editor-textBold',
     code: 'editor-textCode',
-    italic: 'editor-textItalic',
+    italic: 'italic',
     strikethrough: 'editor-textStrikethrough',
     subscript: 'editor-textSubscript',
     superscript: 'editor-textSuperscript',
@@ -116,4 +119,4 @@ const theme = {
     url: 'editor-tokenOperator',
     variable: 'editor-tokenVariable',
   },
-};
+}

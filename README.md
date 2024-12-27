@@ -6,7 +6,73 @@ His code can be found here: https://github.com/usmanabdurrehman/React-tutorials/
 
 His excellent video tutorial can be found here: https://www.youtube.com/watch?v=XI6nufqMSek
 
+## Also See
 
+https://stackblitz.com/edit/facebook-lexical-rjf2em?file=src%2Fplugins%2FToolbarPlugin.tsx
+
+## TODOS
+
+- [ ] Convert to StyleX after project is at parity with the end of the [crash course video](https://www.youtube.com/watch?v=aXAQ_ZVFI5Q)
+
+- [ ] Use react compiler and remove the use of useCallback
+
+- [x] Configure prettier
+
+- [ ] Move functionality into hooks, e.g.
+
+```
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { $isRangeSelection, TOGGLE_BOLD_COMMAND } from "lexical";
+import { useEffect } from "react";
+
+export function useToggleBold() {
+  const [editor] = useLexicalComposerContext();
+
+  useEffect(() => {
+    if (!editor.hasNodes([LexicalNode])) {
+      return;
+    }
+
+    return editor.registerCommand(
+      TOGGLE_BOLD_COMMAND,
+      (payload) => {
+        editor.update(() => {
+          const selection = editor.getSelection();
+          if ($isRangeSelection(selection)) {
+            selection.toggleFormat("bold");
+          }
+        });
+
+        return true;
+      },
+      "transaction"
+    );
+  }, [editor]);
+
+  return () => {
+    editor.dispatchCommand(TOGGLE_BOLD_COMMAND);// Use editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold") instead
+  };
+}
+
+```
+
+use:
+
+```
+import { useToggleBold } from "./useToggleBold";
+
+export default function MyEditorToolbar() {
+  const toggleBold = useToggleBold();
+
+  return (
+    <button onClick={toggleBold}>
+      <span aria-label="Format as bold" role="button">
+        B
+      </span>
+    </button>
+  );
+}
+```
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
