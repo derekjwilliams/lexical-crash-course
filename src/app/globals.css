@@ -19,3 +19,20 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+.undo:disabled,
+.redo:disabled {
+  opacity: 0.2;
+}
+.undo,
+.redo {
+  width: 15px;
+  height: 15px;
+  background-repeat: no-repeat;
+}
+.undo {
+  background-image: url(/icons/arrow-counterclockwise.svg);
+}
+
+.redo {
+  background-image: url(/icons/arrow-clockwise.svg);
+}
