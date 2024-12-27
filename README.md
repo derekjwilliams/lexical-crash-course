@@ -1,5 +1,13 @@
 # lexical-crash-course
 
+This is based on the excellent tutorial by Usman Abdur Rehman
+
+His code can be found here: https://github.com/usmanabdurrehman/React-tutorials/tree/Lexical
+
+His excellent video tutorial can be found here: https://www.youtube.com/watch?v=XI6nufqMSek
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
