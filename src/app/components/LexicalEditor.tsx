@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin'
 import { LexicalComposer } from '@lexical/react/LexicalComposer'
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
-import { ContentEditable } from "@lexical/react/LexicalContentEditable"
+import { ContentEditable } from '@lexical/react/LexicalContentEditable'
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin'
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary'
 import LexicalToolbar from './LexicalToolbar'
@@ -80,11 +80,11 @@ const theme = {
     bold: 'font-bold editor-textBold',
     code: 'editor-textCode',
     italic: 'italic',
-    strikethrough: 'editor-textStrikethrough',
+    strikethrough: 'line-through',
     subscript: 'editor-textSubscript',
     superscript: 'editor-textSuperscript',
-    underline: 'editor-textUnderline',
-    underlineStrikethrough: 'editor-textUnderlineStrikethrough',
+    underline: 'underline',
+    underlineStrikethrough: 'underlineStrikethrough',
   },
   code: 'editor-code',
   codeHighlight: {

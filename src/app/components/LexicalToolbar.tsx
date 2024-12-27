@@ -29,6 +29,8 @@ export default function LexicalToolbar() {
     if ($isRangeSelection(selection)) {
       setIsBold(selection.hasFormat('bold'))
       setIsItalic(selection.hasFormat('italic'))
+      setIsUnderline(selection.hasFormat('underline'))
+      setIsStrikethrough(selection.hasFormat('strikethrough'))
     }
   }, [])
 
@@ -81,6 +83,20 @@ export default function LexicalToolbar() {
         }}
         className={`italic size-8 ${isItalic ? 'bg-gray-200' : ''}`}>
         i
+      </button>
+      <button
+        onClick={() => {
+          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline')
+        }}
+        className={`underline size-8 ${isUnderline ? 'bg-gray-200' : ''}`}>
+        U
+      </button>
+      <button
+        onClick={() => {
+          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough')
+        }}
+        className={`line-through size-8 ${isStrikethrough ? 'bg-gray-200' : ''}`}>
+        S
       </button>
       <button
         disabled={!canUndo}

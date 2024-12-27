@@ -36,3 +36,7 @@ body {
 .redo {
   background-image: url(/icons/arrow-clockwise.svg);
 }
+
+.underlineStrikethrough {
+  text-decoration: underline line-through;
+}
