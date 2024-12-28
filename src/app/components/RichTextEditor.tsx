@@ -1,8 +1,5 @@
 'use client'
 
-import { $getRoot, $getSelection } from 'lexical'
-import { useEffect } from 'react'
-
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin'
 import { LexicalComposer } from '@lexical/react/LexicalComposer'
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
@@ -11,24 +8,19 @@ import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin'
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary'
 import LexicalToolbar from './LexicalToolbar'
 import { HeadingNode } from '@lexical/rich-text'
+import { CodeHighlightNode, CodeNode } from '@lexical/code'
 import theme from './theme'
-
-interface RichTextEditorProps {}
 
 function onError(error: any) {
   console.error(error)
 }
 
-// export default function LexicalEditor() {
-//   return (<div className="max-2-4xl mx-auto bg-white rounded-lg h-[50vh] p-5"></div>)
-// }
-
 export default function RichTextEditor() {
   const initialConfig = {
-    namespace: 'MyEditor',
+    namespace: 'RichTextEditor-1',
     theme,
     onError,
-    nodes: [HeadingNode],
+    nodes: [HeadingNode, CodeHighlightNode, CodeNode],
   }
 
   return (

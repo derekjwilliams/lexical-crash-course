@@ -17,8 +17,9 @@ import {
 import React, { useCallback, useEffect, useRef, useState, RefObject } from 'react'
 import { createPortal } from 'react-dom'
 import BlockOptionsDropdownList from './BlockOptionsDropdownList'
+import { LOW_PRIORIRTY } from './LexicalConstants'
 
-const LowPriority = 1
+const LowPriority = LOW_PRIORIRTY
 
 // const handleHeading = () => {
 //   editor.update(() => {
