@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^3.2.3",
     "@lexical/react": "^0.22.0",
     "@lexical/rich-text": "^0.22.0",
     "@lexical/selection": "^0.22.0",

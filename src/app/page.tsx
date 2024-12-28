@@ -1,10 +1,10 @@
 import React from 'react'
-import Editor from './components/Editor'
+import RichTextEditor from './components/RichTextEditor'
 
 export default function Home() {
   return (
     <div className='bg-slate-100 h-screen py-10'>
-      <Editor />
+      <RichTextEditor />
     </div>
   )
 }
