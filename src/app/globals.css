@@ -77,6 +77,11 @@ body {
   background-size: contain;
 }
 
+.toolbar-item-button svg {
+  /* shape-rendering: geometricPrecision; */
+  width: 18px;
+  height: 18px;
+}
 .dropdown .item:first-child {
   margin-top: 8px;
 }

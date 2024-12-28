@@ -17,7 +17,8 @@ import {
 import React, { useCallback, useEffect, useRef, useState, RefObject } from 'react'
 import { createPortal } from 'react-dom'
 import BlockOptionsDropdownList from './BlockOptionsDropdownList'
-import { LOW_PRIORIRTY } from './LexicalConstants'
+import { LOW_PRIORIRTY, RICH_TEXT_OPTIONS } from './LexicalConstants'
+import { Bold, Italic, RotateCcw, RotateCw, Strikethrough, Underline } from 'lucide-react'
 
 const LowPriority = LOW_PRIORIRTY
 
@@ -102,72 +103,78 @@ export default function LexicalToolbar() {
   }, [editor, $updateToolbar])
 
   return (
-    <div className='space-x-5' ref={toolbarRef}>
-      {supportedBlockTypes.has(blockType) && (
-        <>
-          <button
-            className='toolbar-item block-controls'
-            onClick={() => setShowBlockOptionsDropDown(!showBlockOptionsDropDown)}
-            aria-label='Formatting Options'>
-            <span className={'icon block-type ' + blockType} />
-            <span className='text'>{blockTypeToBlockName[blockType as keyof typeof blockTypeToBlockName]}</span>
-            <i className='chevron-down' />
-          </button>
-          {showBlockOptionsDropDown &&
-            createPortal(
-              <BlockOptionsDropdownList
-                editor={editor}
-                blockType={blockType}
-                toolbarRef={toolbarRef}
-                setShowBlockOptionsDropDown={setShowBlockOptionsDropDown}
-              />,
-              document.body
-            )}
-        </>
-      )}
+    <>
+      <div className='space-x-5' ref={toolbarRef}>
+        {supportedBlockTypes.has(blockType) && (
+          <>
+            <button
+              className='toolbar-item block-controls'
+              onClick={() => setShowBlockOptionsDropDown(!showBlockOptionsDropDown)}
+              aria-label='Formatting Options'>
+              <span className={'icon block-type ' + blockType} />
+              <span className='text'>{blockTypeToBlockName[blockType as keyof typeof blockTypeToBlockName]}</span>
+              <i className='chevron-down' />
+            </button>
+            {showBlockOptionsDropDown &&
+              createPortal(
+                <BlockOptionsDropdownList
+                  editor={editor}
+                  blockType={blockType}
+                  toolbarRef={toolbarRef}
+                  setShowBlockOptionsDropDown={setShowBlockOptionsDropDown}
+                />,
+                document.body
+              )}
+          </>
+        )}
 
-      <button
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold')
-        }}
-        className={`size-8 ${isBold ? 'bg-gray-200' : ''}`}>
-        B
-      </button>
-      <button
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')
-        }}
-        className={`italic size-8 ${isItalic ? 'bg-gray-200' : ''}`}>
-        i
-      </button>
-      <button
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline')
-        }}
-        className={`underline size-8 ${isUnderline ? 'bg-gray-200' : ''}`}>
-        U
-      </button>
-      <button
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough')
-        }}
-        className={`line-through size-8 ${isStrikethrough ? 'bg-gray-200' : ''}`}>
-        S
-      </button>
-      <button
-        disabled={!canUndo}
-        onClick={() => {
-          editor.dispatchCommand(UNDO_COMMAND, undefined)
-        }}
-        className='toolbar-item undo'
-        aria-label='Undo'></button>
-      <button
-        disabled={!canRedo}
-        onClick={() => {
-          editor.dispatchCommand(REDO_COMMAND, undefined)
-        }}
-        className='toolbar-item redo'
-        aria-label='Redo'></button>
-    </div>
+        <button
+          onClick={() => {
+            editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold')
+          }}
+          className={`toolbar-item-button ${isBold ? 'bg-gray-200' : ''}`}>
+          <Bold />
+        </button>
+        <button
+          onClick={() => {
+            editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')
+          }}
+          className={`toolbar-item-button ${isItalic ? 'bg-gray-200' : ''}`}>
+          <Italic />
+        </button>
+        <button
+          onClick={() => {
+            editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline')
+          }}
+          className={`toolbar-item-button ${isUnderline ? 'bg-gray-200' : ''}`}>
+          <Underline />
+        </button>
+        <button
+          onClick={() => {
+            editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough')
+          }}
+          className={`toolbar-item-button ${isStrikethrough ? 'bg-gray-200' : ''}`}>
+          <Strikethrough />
+        </button>
+        <button
+          disabled={!canUndo}
+          onClick={() => {
+            editor.dispatchCommand(UNDO_COMMAND, undefined)
+          }}
+          className='toolbar-item-button'
+          aria-label='Undo'>
+          <RotateCcw />
+        </button>
+        <button
+          disabled={!canRedo}
+          onClick={() => {
+            editor.dispatchCommand(REDO_COMMAND, undefined)
+          }}
+          className='toolbar-item-button'
+          aria-label='Redo'>
+          <RotateCw />
+        </button>
+      </div>
+    </>
   )
 }

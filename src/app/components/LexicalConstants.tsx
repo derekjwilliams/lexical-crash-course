@@ -1,19 +1,3 @@
-// import {
-//   ArrowClockwise,
-//   ArrowCounterclockwise,
-//   Code,
-//   Highlighter,
-//   Justify,
-//   JustifyLeft,
-//   JustifyRight,
-//   Subscript,
-//   Superscript,
-//   TextCenter,
-//   TypeBold,
-//   TypeItalic,
-//   TypeStrikethrough,
-//   TypeUnderline,
-// } from "react-bootstrap-icons";
 import {
   RotateCw,
   RotateCcw,
@@ -52,12 +36,10 @@ export const RICH_TEXT_OPTIONS = [
   { id: RichTextAction.Bold, icon: <Bold />, label: 'Bold' },
   { id: RichTextAction.Italics, icon: <Italic />, label: 'Italics' },
   { id: RichTextAction.Underline, icon: <Underline />, label: 'Underline' },
-  { id: RichTextAction.Divider },
   {
     id: RichTextAction.Highlight,
     icon: <Highlighter />,
     label: 'Highlight',
-    fontSize: 10,
   },
   {
     id: RichTextAction.Strikethrough,
@@ -79,7 +61,6 @@ export const RICH_TEXT_OPTIONS = [
     icon: <Code />,
     label: 'Code',
   },
-  { id: RichTextAction.Divider },
   {
     id: RichTextAction.LeftAlign,
     icon: <AlignLeft />,
@@ -100,7 +81,6 @@ export const RICH_TEXT_OPTIONS = [
     icon: <AlignJustify />,
     label: 'Align Justify',
   },
-  { id: RichTextAction.Divider },
   {
     id: RichTextAction.Undo,
     icon: <RotateCcw />,
